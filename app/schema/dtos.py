@@ -1,4 +1,5 @@
 from pydantic import BaseModel, Field
+from typing import Dict, Any, Optional
 
 
 class WeatherResponse(BaseModel):
@@ -19,3 +20,22 @@ class SummaryRequest(BaseModel):
 
 class SummaryResponse(BaseModel):
     summary: str
+
+
+class ActuatorLink(BaseModel):
+    href: str
+    templated: bool = False
+
+class ActuatorIndexResponse(BaseModel):
+    links: Dict[str, ActuatorLink]
+
+class HealthComponent(BaseModel):
+    status: str
+    details: Optional[Dict[str, Any]] = None
+
+class ActuatorHealthResponse(BaseModel):
+    status: str
+    components: Optional[Dict[str, HealthComponent]] = None
+
+class ActuatorInfoResponse(BaseModel):
+    app: Dict[str, Any]

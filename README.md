@@ -61,7 +61,7 @@ ENVIRONMENT=prod uvicorn app.main:app --reload
 
 ## API cURL
 
-***Weather API***
+***Actuator API***
 ```bash
 curl -X GET http://localhost:8000/actuator
 ```
